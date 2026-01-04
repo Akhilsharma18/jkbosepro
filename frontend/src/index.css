@@ -1,0 +1,25 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply text-textDark bg-white font-sans;
+  }
+}
+
+.container-custom {
+  @apply max-w-6xl mx-auto px-4;
+}
+
+.table-custom {
+  @apply w-full border-collapse border border-gray-300;
+}
+
+.table-custom th {
+  @apply bg-primary text-white p-2 text-left border border-gray-300 font-bold;
+}
+
+.table-custom td {
+  @apply p-2 border border-gray-300 text-sm;
+}
