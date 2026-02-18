@@ -8,7 +8,11 @@ dotenv.config();
 const app = express();
 
 // Middleware
-app.use(cors());
+// Middleware
+app.use(cors({
+  origin: ['http://localhost:5173', 'https://jkbose-study.vercel.app'],
+  credentials: true
+}));
 app.use(express.json());
 
 // Database Connection
