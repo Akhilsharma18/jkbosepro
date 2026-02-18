@@ -1,18 +1,19 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { Link } from 'react-router-dom';
+import API from '../api';
 
 const Home = () => {
   const [notifications, setNotifications] = useState([]);
 
   useEffect(() => {
-    // In real app, fetch from API
-    // axios.get('http://localhost:5000/api/notifications').then(...)
-    setNotifications([
-      { _id: '1', title: 'Date Sheet for Class 10th Annual Regular 2025', date: '2025-01-02' },
-      { _id: '2', title: 'Result Gazette Class 12th Bi-Annual', date: '2024-12-28' },
-      { _id: '3', title: 'Circular regarding change in exam centers', date: '2024-12-25' },
-    ]);
+    const fetchNotifications = async () => {
+      try {
+        const { data } = await API.get('/api/notifications');
+        setNotifications(data);
+      } catch (error) {
+        console.error('Error fetching notifications:', error);
+      }
+    };
+
+    fetchNotifications();
   }, []);
 
   return (

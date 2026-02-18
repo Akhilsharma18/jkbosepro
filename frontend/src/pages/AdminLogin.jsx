@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import API from '../api';
 
 const AdminLogin = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
 
-  const handleLogin = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    // Simulate login
-    if (email === 'admin@jkbose.nic.in' && password === 'admin123') {
-      localStorage.setItem('adminToken', 'dummy-token');
+    try {
+      const { data } = await API.post('/api/admin/login', { email, password });
+      localStorage.setItem('adminToken', data.token);
       navigate('/admin/dashboard');
-    } else {
-      alert('Invalid Credentials');
+    } catch (error) {
+      alert(error.response?.data?.message || 'Invalid Credentials');
     }
   };
 
