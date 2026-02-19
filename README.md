@@ -1,4 +1,4 @@
-# JKBOSE Clone Project
+# JKBOSE 
 
 This is a Full Stack MERN clone of the JKBOSE website.
 
